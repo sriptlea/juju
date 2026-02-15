@@ -367,7 +367,7 @@ local files = {
     ["spam.json"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/spam.json"),
 },
 ["themes"] = {
-    ["default.th"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/default.th"),
+    ["default.th"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/default.th"),
 },
     ["addons"] = {},
     ["configs"] = {},
