@@ -323,11 +323,20 @@ local function safeHttp(url)
     local ok, res = pcall(function()
         return game:HttpGet(url)
     end)
-    if not ok then
+    if not ok or not res then
         warn("Failed to fetch:", url)
         return nil
     end
     return res
+end
+
+local function debugRBXM(folder, name, url)
+    local ok, data = pcall(safeHttp, url)
+    if not ok or not data then
+        warn("[RBXM DEBUG] Failed to download:", folder, name, url)
+        return nil
+    end
+    return data
 end
 
 local files = {
@@ -349,12 +358,12 @@ local files = {
     },
     ["custom"] = {
         ["textures.json"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/example.textures") end,
-        ["character.rbxm"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/character.rbxm") end,
-        ["pinksky.rbxm"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/pinksky.rbxm") end,
+        ["character.rbxm"] = function() return debugRBXM("custom", "character.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/character.rbxm") end,
+        ["pinksky.rbxm"] = function() return debugRBXM("custom", "pinksky.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/pinksky.rbxm") end,
         ["crunch.ogg"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/juju.ogg") end,
         ["scar.ogg"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/scar.ogg") end,
-        ["x hit.rbxm"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/x%20hit.rbxm") end,
-        ["blossom aura.rbxm"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/blossom%20aura.rbxm") end,
+        ["x hit.rbxm"] = function() return debugRBXM("custom", "x hit.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/x%20hit.rbxm") end,
+        ["blossom aura.rbxm"] = function() return debugRBXM("custom", "blossom aura.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/blossom%20aura.rbxm") end,
         ["spam.json"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/spam.json") end,
     },
     ["themes"] = {
