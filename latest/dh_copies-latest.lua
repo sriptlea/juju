@@ -336,39 +336,39 @@ local function debugRBXM(folder, name, url)
         warn("[RBXM DEBUG] Failed to download:", folder, name, url)
         return nil
     end
-    return data
+    return data  -- always returns string, never a function
 end
 
 local files = {
     ["assets"] = {
-        ["api.lua"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/api.lua") end,
-        ["sparkle.ogg"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/sparkle.ogg") end,
-        ["skeet.ogg"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/skeet.ogg") end,
-        ["neverlose.ogg"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/neverlose.ogg") end,
-        ["break.ogg"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/break.ogg") end,
-        ["mc bow.ogg"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/mc%20bow.ogg") end,
-        ["primordial.ogg"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/primordial.ogg") end,
-        ["rust.ogg"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/rust.ogg") end,
-        ["sexy.ogg"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/sexy.ogg") end,
-        ["jaydes.png"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/jaydes.png") end,
-        ["1.png"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/1.png") end,
-        ["2.png"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/2.png") end,
-        ["logo.png"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/logo.png") end,
-        ["saturation.png"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/saturation.png") end,
+        ["api.lua"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/api.lua"),
+        ["sparkle.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/sparkle.ogg"),
+        ["skeet.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/skeet.ogg"),
+        ["neverlose.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/neverlose.ogg"),
+        ["break.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/break.ogg"),
+        ["mc bow.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/mc%20bow.ogg"),
+        ["primordial.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/primordial.ogg"),
+        ["rust.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/rust.ogg"),
+        ["sexy.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/sexy.ogg"),
+        ["jaydes.png"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/jaydes.png"),
+        ["1.png"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/1.png"),
+        ["2.png"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/2.png"),
+        ["logo.png"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/logo.png"),
+        ["saturation.png"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/saturation.png"),
     },
-["custom"] = {
-    ["textures.json"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/textures.json"),
-    ["character.rbxm"] = debugRBXM("custom", "character.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/character.rbxm"),
-    ["pinksky.rbxm"] = debugRBXM("custom", "pinksky.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/pinksky.rbxm"),
-    ["crunch.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/juju.ogg"),
-    ["scar.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/scar.ogg"),
-    ["x hit.rbxm"] = debugRBXM("custom", "x hit.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/x%20hit.rbxm"),
-    ["blossom aura.rbxm"] = debugRBXM("custom", "blossom aura.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/blossom%20aura.rbxm"),
-    ["spam.json"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/spam.json"),
-},
-["themes"] = {
-    ["default.th"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/default.th"),
-},
+    ["custom"] = {
+        ["textures.json"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/textures.json"),
+        ["character.rbxm"] = debugRBXM("custom", "character.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/character.rbxm"),
+        ["pinksky.rbxm"] = debugRBXM("custom", "pinksky.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/pinksky.rbxm"),
+        ["crunch.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/juju.ogg"),
+        ["scar.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/scar.ogg"),
+        ["x hit.rbxm"] = debugRBXM("custom", "x hit.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/x%20hit.rbxm"),
+        ["blossom aura.rbxm"] = debugRBXM("custom", "blossom aura.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/blossom%20aura.rbxm"),
+        ["spam.json"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/spam.json"),
+    },
+    ["themes"] = {
+        ["default.th"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/default.th"),
+    },
     ["addons"] = {},
     ["configs"] = {},
     ["data.dat"] = [[{"notifications":true,"theme":"","favorites":[]}]]
