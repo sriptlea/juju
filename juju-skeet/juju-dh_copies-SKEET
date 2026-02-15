@@ -16,7 +16,7 @@ LPH_NO_VIRTUALIZE(function()
 	local exec = identifyexecutor()
 	
 	if is_solara then
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/jujudotlol/jujudotlol.github.io/main/solara_drawing.lua"))()
+		warn("No solara drawing.")
 		getfenv().gethiddenproperty = function() return false end
 		getfenv().setfflag = function() end
 		getfenv().cloneref = function(v) return v end
@@ -39,7 +39,7 @@ LPH_NO_VIRTUALIZE(function()
 				return new
 			end
 		else
-			loadstring(game:HttpGet(string.find(exec, "Syn") and "https://raw.githubusercontent.com/jujudotlol/jujudotlol.github.io/main/solara_drawing.lua" or "https://raw.githubusercontent.com/jujudotlol/jujudotlol.github.io/main/wave_drawing.lua"))()
+			warn("No other custom drawing (wave, etc) ")
 		end
 	end
 end)()
