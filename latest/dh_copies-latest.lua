@@ -1,4 +1,4 @@
-warn("hello from devs")
+warn("starting juju")
 repeat task["wait"]() until game:IsLoaded()
 
 if identifyexecutor() == "AWP" then
