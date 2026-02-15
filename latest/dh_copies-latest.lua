@@ -1,3 +1,4 @@
+warn("hello from devs")
 repeat task["wait"]() until game:IsLoaded()
 
 if identifyexecutor() == "AWP" then
