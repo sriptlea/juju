@@ -356,18 +356,16 @@ local files = {
         ["logo.png"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/logo.png") end,
         ["saturation.png"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/saturation.png") end,
     },
-    ["custom"] = {
-       ["textures.json"] = function()
-       return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/textures.json")
-       end,
-        ["character.rbxm"] = debugRBXM("custom", "character.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/character.rbxm"),
-        ["pinksky.rbxm"] = debugRBXM("custom", "pinksky.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/pinksky.rbxm"),
-        ["crunch.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/juju.ogg"),
-        ["scar.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/scar.ogg"),
-        ["x hit.rbxm"] = debugRBXM("custom", "x hit.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/x%20hit.rbxm"),
-        ["blossom aura.rbxm"] = debugRBXM("custom", "blossom aura.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/blossom%20aura.rbxm"),
-        ["spam.json"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/spam.json"),
-    },
+["custom"] = {
+    ["textures.json"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/textures.json"),
+    ["character.rbxm"] = debugRBXM("custom", "character.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/character.rbxm"),
+    ["pinksky.rbxm"] = debugRBXM("custom", "pinksky.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/pinksky.rbxm"),
+    ["crunch.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/juju.ogg"),
+    ["scar.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/scar.ogg"),
+    ["x hit.rbxm"] = debugRBXM("custom", "x hit.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/x%20hit.rbxm"),
+    ["blossom aura.rbxm"] = debugRBXM("custom", "blossom aura.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/blossom%20aura.rbxm"),
+    ["spam.json"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/spam.json"),
+},
 ["themes"] = {
     ["default.th"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/default.th"),
 },
