@@ -357,7 +357,9 @@ local files = {
         ["saturation.png"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/saturation.png") end,
     },
     ["custom"] = {
-        ["textures.json"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/textures.json"),
+       ["textures.json"] = function()
+       return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/textures.json")
+       end,
         ["character.rbxm"] = debugRBXM("custom", "character.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/character.rbxm"),
         ["pinksky.rbxm"] = debugRBXM("custom", "pinksky.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/pinksky.rbxm"),
         ["crunch.ogg"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/juju.ogg"),
