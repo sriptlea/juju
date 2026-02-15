@@ -368,9 +368,9 @@ local files = {
         ["blossom aura.rbxm"] = debugRBXM("custom", "blossom aura.rbxm", "https://raw.githubusercontent.com/sriptlea/juju/main/assets/blossom%20aura.rbxm"),
         ["spam.json"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/assets/spam.json"),
     },
-    ["themes"] = {
-        ["default.th"] = function() return safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/default.th") end,
-    },
+["themes"] = {
+    ["default.th"] = safeHttp("https://raw.githubusercontent.com/sriptlea/juju/main/default.th"),
+},
     ["addons"] = {},
     ["configs"] = {},
     ["data.dat"] = [[{"notifications":true,"theme":"","favorites":[]}]]
