@@ -132,7 +132,7 @@ LPH_NO_VIRTUALIZE(function()
 	local exec = identifyexecutor()
 	
 	if is_solara then
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/jujudotlol/jujudotlol.github.io/main/solara_drawing.lua"))()
+		warn("No solara drawing")
 		getgenv().gethiddenproperty = function() return false end
 		getgenv().setfflag = function() end
 		getgenv().fireclickdetector = function(part) if auto then return end auto = true local cd = part:FindFirstChild("ClickDetector") or part local oldParent = cd.Parent local p = Instance.new("Part") p.Transparency = 1 p.Size = Vector3.new(30,30,30) p.Anchored = true p.CanCollide = false p.Parent = workspace cd.Parent = p cd.MaxActivationDistance = math.huge local conn conn = game["Run Service"].Heartbeat:Connect(function() p.CFrame = workspace.Camera.CFrame *CFrame.new(0,0,-20) * CFrame.new(workspace.Camera.CFrame.LookVector.X,workspace.Camera.CFrame.LookVector.Y,workspace.Camera.CFrame.LookVector.Z) game:GetService("VirtualUser"):ClickButton1(Vector2.new(20,20), workspace:FindFirstChildOfClass("Camera").CFrame) end) cd.MouseClick:Once(function() conn:Disconnect() cd.Parent = oldParent p:Destroy() auto = false end) end
@@ -154,7 +154,7 @@ LPH_NO_VIRTUALIZE(function()
 				return new
 			end
 		else
-			loadstring(game:HttpGet(string.find(exec, "Syn") and "https://raw.githubusercontent.com/jujudotlol/jujudotlol.github.io/main/solara_drawing.lua" or "https://raw.githubusercontent.com/jujudotlol/jujudotlol.github.io/main/wave_drawing.lua"))()
+			warn("No custom drawing thxs")
 		end
 	end
 end)()
