@@ -63,7 +63,8 @@ LPH_JIT_MAX(function()
 
             return fake_old
         end
-
+        print("connection_count =", connection_count)
+			
         old = nil; old = safe_hook_function(signal.__index, LPH_NO_UPVALUES(function(self, index)
             if (index:find("^[Cc]onnect")) and getinfo(3) then
                 local source = getinfo(3).source
