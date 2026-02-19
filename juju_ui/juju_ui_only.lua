@@ -21,6 +21,7 @@ local players_service = cloneref(game:GetService("Players"))
         local mouse = local_player:GetMouse()
 local tween_service = cloneref(game:GetService("TweenService"))
     local get_value = tween_service["GetValue"]
+local run_service = cloneref(game:GetService("RunService"))
 local http_service = cloneref(game:GetService("HttpService"))
 local workspace = workspace
     local camera = cloneref(workspace["CurrentCamera"])
@@ -4263,7 +4264,7 @@ local files = {
         self["total_y_size"]+=30
         self["elements"][#self["elements"]+1] = new_item
 
-        local icons = info["icons"]
+        local icons = info["icons"] or {}
         for i = 1, #icons do
             local icon = icons[i]
             local name = "icon_"..tostring(clock())
@@ -7650,58 +7651,59 @@ local files = {
 
         -- >> ( group creation )
 
+        -- >> ( test / documentation )
+
         do
-            local main = menu.create_group("main")
-                main:create_tab("ragebot")
-                main:create_tab("legitbot")
+            local test = menu.create_group("test")
+                test:create_tab("overview")
+                test:create_tab("controls")
+                test:create_tab("colors")
+                test:create_tab("lists")
+                test:create_tab("configs")
 
-            local visuals = menu.create_group("visuals")
-                visuals:create_tab("players")
-                visuals:create_tab("general")
-                visuals:create_tab("skins")
+            local overview = test:create_section("overview", "test", 1, 1, 0)
+            local doc_line_1 = overview:create_element({["name"] = "documentation"}, {["info"] = {}})
+            local doc_line_2 = overview:create_element({["name"] = "animations"}, {["info"] = {}})
+            local doc_line_3 = overview:create_element({["name"] = "tips"}, {["info"] = {}})
 
-           local misc = menu.create_group("misc.")
-                misc:create_tab("players")
-                misc:create_tab("configs")
-                misc:create_tab("addons")
-                misc:create_tab("shop")
-                misc:create_tab("main")
-            menu.create_group("addons")
-            menu["groups"]["addons"]:hide()
+            doc_line_1:set_info("Text", "UiOnly test: clean UI examples + configs")
+            doc_line_2:set_info("Text", "smooth tab hover + switch animations")
+            doc_line_3:set_info("Text", "right-click elements for context options")
+
+            local controls = test:create_section("controls", "inputs", 1, 1, 0)
+            controls:create_element({["name"] = "enable demo"}, {
+                ["toggle"] = {["flag"] = "!test_toggle", ["default"] = true}
+            })
+            controls:create_element({["name"] = "speed"}, {
+                ["slider"] = {["flag"] = "!test_speed", ["min"] = 0, ["max"] = 100, ["default"] = 50, ["suffix"] = "%", ["decimals"] = 0}
+            })
+            controls:create_element({["name"] = "mode"}, {
+                ["dropdown"] = {["flag"] = "!test_mode", ["options"] = {"low", "medium", "high"}, ["default"] = {"medium"}, ["multi"] = false, ["requires_one"] = true}
+            })
+            controls:create_element({["name"] = "label"}, {
+                ["textbox"] = {["flag"] = "!test_label", ["default"] = "hello"}
+            })
+            controls:create_element({["name"] = "hotkey"}, {
+                ["keybind"] = {["flag"] = "!test_key", ["default"] = Enum["KeyCode"]["RightShift"]}
+            })
+
+            local colors = test:create_section("colors", "colors", 1, 1, 0)
+            colors:create_element({["name"] = "accent"}, {
+                ["colorpicker"] = {["color_flag"] = "!test_color", ["transparency_flag"] = "!test_color_alpha", ["default_color"] = color3_fromrgb(154, 213, 222), ["default_transparency"] = 0}
+            })
+
+            local list_panel = test:create_panel_section("lists", "items", 1, false, false)
+            list_panel:add_item({["text"] = "alpha"})
+            list_panel:add_item({["text"] = "bravo"})
+            list_panel:add_item({["text"] = "charlie"})
+            list_panel:add_item({["text"] = "delta"})
         end
-
-        menu_references["addon_list"] = menu["groups"]["misc."]:create_panel_section("addons", "addon list", 1, 1, 0)
-        menu_references["addon_panel"] = menu["groups"]["misc."]:create_section("addons", "addon panel", 2, 1, 0)
-
-        menu_references["load_addon"] = menu_references["addon_panel"]:create_element({
-            ["name"] = "load addon"
-        }, {
-            ["button"] = {
-                ["fake"] = true
-            }
-        })
-
-        menu_references["unload_addon"] = menu_references["addon_panel"]:create_element({
-            ["name"] = "unload addon"
-        }, {
-            ["button"] = {
-                ["fake"] = true
-            }
-        })
-
-        menu_references["refresh_addon_list"] = menu_references["addon_panel"]:create_element({
-            ["name"] = "refresh addon list"
-        }, {
-            ["button"] = {
-                ["fake"] = true
-            }
-        })
 
         -- >> ( configs )
 
-        local config_list = menu["groups"]["misc."]:create_panel_section("configs", "config list", 1, false, true)
-        local config_info = menu["groups"]["misc."]:create_section("configs", "config info", 2, 0.3, 0)
-        local config_editor = menu["groups"]["misc."]:create_section("configs", "config editor", 2, 0.7, 0.3)
+        local config_list = menu["groups"]["test"]:create_panel_section("configs", "config list", 1, false, true)
+        local config_info = menu["groups"]["test"]:create_section("configs", "config info", 2, 0.3, 0)
+        local config_editor = menu["groups"]["test"]:create_section("configs", "config editor", 2, 0.7, 0.3)
 
         menu_references["config_list"] = config_list
 
@@ -8000,6 +8002,14 @@ local files = {
             old_drawing["_UNLOAD"]()
         end
 
+        -- >> ( render / tween loop )
+
+        create_connection(run_service["Heartbeat"], LPH_NO_VIRTUALIZE(function(dt)
+            for i = 1, #heartbeat do
+                spawn(heartbeat[i], dt)
+            end
+        end))
+
         -- >> ( data )
 
         local s, data = pcall(function()
@@ -8042,6 +8052,9 @@ local files = {
                 ["hide_on_load"] = false,
                 ["theme"] = "",
             }))
+
+            pop_menu(true)
+            pop_menu()
         end
     end
 end
